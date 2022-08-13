@@ -1,0 +1,17 @@
+version: '3.1'
+
+services:
+  khpi_php:
+    build: ./php
+    container_name: khpi_php
+    volumes:
+      - ../server:/var/www/html
+    ports:
+      - '8184:80'
+    environment:
+      WEB_DOCUMENT_ROOT: /var/www/html/public
+      WEB_DOCUMENT_INDEX: index.php
+      PHP_MEMORY_LIMIT: 2048M
+      PHP_UPLOAD_MAX_FILESIZE: 512M
+      PHP_POST_MAX_SIZE: 512M
+      PHP_DISPLAY_ERRORS: 1

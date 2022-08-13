@@ -1,0 +1,6 @@
+{
+  "name": "root/html",
+  "require": {
+    "squizlabs/php_codesniffer": "*"
+  }
+}

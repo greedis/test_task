@@ -1,0 +1,19 @@
+start project
+    docker-compose up
+   	docker-compose up --build
+stop project
+    docker-compose stop
+    docker-compose down
+kill project
+    docker-compose kill
+    docker-compose down --rm=all
+
+mysql:
+    login myapp
+    pass myapp
+
+docker bash:
+    docker exec -it nix_2_php /bin/bash
+
+Problem private
+    sudo chown -R $USER server
