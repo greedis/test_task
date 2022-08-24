@@ -73,7 +73,7 @@ $count = count($response);
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-
+                <img class="gif" src="https://i.gifer.com/7IsB.gif" alt="cat">
             </div>
         </div>
     </div>
@@ -108,7 +108,8 @@ $count = count($response);
                 if (len === 0){
                     table_td = `<tr>This user has no transactions yet</tr>`
                 }
-                $(".modal-body").html(`<table class="table table-success table-striped">${table_td}</table>`);
+                // $('.modal-body').removeClass('gif');
+                $(".modal-body").removeClass('gif').html(`<table class="table table-success table-striped">${table_td}</table>`);
                 $(".modal-title").text(`Transactions list`);
             }
         });
