@@ -1,7 +1,8 @@
 <?php
 $curl = curl_init();
 
-curl_setopt_array($curl, array(
+curl_setopt_array(
+    $curl, array(
     CURLOPT_URL => 'https://user-transaction-fetch-api.herokuapp.com/user',
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_ENCODING => '',
@@ -10,7 +11,8 @@ curl_setopt_array($curl, array(
     CURLOPT_FOLLOWLOCATION => true,
     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
     CURLOPT_CUSTOMREQUEST => 'GET',
-));
+    )
+);
 
 $response = curl_exec($curl);
 
@@ -47,13 +49,13 @@ $count = count($response);
         </tr>
         <?php for ($i = 0; $i < $count; $i++): ?>
             <tr>
-                <td><?= $response[$i]->name ?></td>
-                <td><?= $response[$i]->email ?></td>
-                <td><?= $response[$i]->status ?></td>
-                <td><?= $response[$i]->id ?></td>
+                <td><?php echo $response[$i]->name ?></td>
+                <td><?php echo $response[$i]->email ?></td>
+                <td><?php echo $response[$i]->status ?></td>
+                <td><?php echo $response[$i]->id ?></td>
                 <td>
                     <form action="queries.php" method="post">
-                        <input type="hidden" name="id" value="<?=$response[$i]->id ?>">
+                        <input type="hidden" name="id" value="<?php echo $response[$i]->id ?>">
                         <button type="submit" class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#exampleModal">
                             Transactions
                         </button>
