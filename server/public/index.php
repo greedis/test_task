@@ -90,17 +90,21 @@ $count = count($response);
             data: $(this).serialize(),
             success: function (data) {
                 let len = data.length;
-                let table_td = `<tr>
+
+                    let table_td = `<tr>
                             <th>identifier</th><th>timestamp</th><th>Price</th><th>Product name</th><th>Quantity</th>
                         </tr>`;
-                for (let i = 0; i < len; i++) {
-                    table_td += `<tr>`;
-                    table_td += `<td>${data[i].identifier}</td>`;
-                    table_td += `<td>${data[i].timestamp}</td>`;
-                    table_td += `<td>${data[i].line.price}</td>`;
-                    table_td += `<td>${data[i].line.product_name}</td>`;
-                    table_td += `<td>${data[i].line.quantity}</td>`;
-                    table_td += `</tr>`;
+                    for (let i = 0; i < len; i++) {
+                        table_td += `<tr>`;
+                        table_td += `<td>${data[i].identifier}</td>`;
+                        table_td += `<td>${data[i].timestamp}</td>`;
+                        table_td += `<td>${data[i].line.price}</td>`;
+                        table_td += `<td>${data[i].line.product_name}</td>`;
+                        table_td += `<td>${data[i].line.quantity}</td>`;
+                        table_td += `</tr>`;
+                    }
+                if (len === 0){
+                    table_td = `<tr>This user has no transactions yet</tr>`
                 }
                 $(".modal-body").html(`<table class="table table-success table-striped">${table_td}</table>`);
                 $(".modal-title").text(`Transactions list`);
