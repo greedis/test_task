@@ -13,7 +13,7 @@ mysql:
     pass myapp
 
 docker bash:
-    docker exec -it nix_2_php /bin/bash
+    docker exec -it test_php /bin/bash
 
 Problem private
     sudo chown -R $USER server

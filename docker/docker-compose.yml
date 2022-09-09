@@ -1,9 +1,9 @@
 version: '3.1'
 
 services:
-  khpi_php:
+  test_php:
     build: ./php
-    container_name: khpi_php
+    container_name: test_php
     volumes:
       - ../server:/var/www/html
     ports:
@@ -15,3 +15,31 @@ services:
       PHP_UPLOAD_MAX_FILESIZE: 512M
       PHP_POST_MAX_SIZE: 512M
       PHP_DISPLAY_ERRORS: 1
+
+    depends_on:
+      - test_mysql
+
+  test_mysql:
+    build: ./mysql
+    container_name: test_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: myapp
+      MYSQL_DATABASE: test
+      MYSQL_USER: myapp
+      MYSQL_PASSWORD: myapp
+    ports:
+      - '8004:3306'
+    volumes:
+      - ../test-db:/var/lib/mysql
+
+  phpmyadmin:
+    depends_on:
+      - test_mysql
+    image: phpmyadmin/phpmyadmin:latest
+    ports:
+      - '8009:80'
+    environment:
+      PMA_HOST: test_mysql
+
+volumes:
+  test-db:
